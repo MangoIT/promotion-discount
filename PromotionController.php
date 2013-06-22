@@ -3,7 +3,7 @@
 * @package      Admin section - Promotion Controller
 * @access       Private
 * @version      1.0
-* @Owner        SHOCK E-COMMERCE
+* @Owner        Anylinuxwork
 * @Details      This is Admin Promotion discount section. Controller is containing actions for Add/edit/delete 
 *				operations for various types of promotion discounts.
 **/
