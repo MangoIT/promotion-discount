@@ -3,7 +3,7 @@
 * @package      Promotion class
 * @access       Private
 * @version      1.0
-* @Owner        SHOCK E-COMMERCE
+* @Owner        Anylinuxwork
 * @Details      This class will contain all the functions related to promotional rules/discounts. this class is
 *				extending discount class
 **/
