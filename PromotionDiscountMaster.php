@@ -3,7 +3,7 @@
 * @package      PromotionDiscountMaster model
 * @access       Private
 * @version      1.0
-* @Owner        SHOCK E-COMMERCE
+* @Owner        Anylinuxwork
 * @Details      This class will contain all the model functions related to promotional rules/discounts module. 
 **/
 class Default_Model_PromotionDiscountMaster extends Zend_Db_table
