@@ -1,0 +1,90 @@
+<?php $promotionInfo = $this->promotionInfo;?>
+<div class="link-button"><a class="log" href="<?php echo $this->baseUrl();?>admin/promotion">Back</a></div>
+<h2>View Promotion Information</h2>
+<div class="form-list">
+	<div class="common-row">
+    <label>Promotion Name</label>
+	<?php echo $this->escape($promotionInfo->name);?>
+    </div>
+    
+    <div class="common-row">
+    <label>Promotion Type</label>
+	<span class="description"><?php echo $this->escape($this->typeHtml);?></span>
+    </div>
+        
+    <div class="common-row">
+    <label>Description</label>
+	<span class="description"><?php echo $promotionInfo->intro?$promotionInfo->intro:"-";?></span>
+    </div>
+    
+	<div class="common-row">
+    <label>Start Time</label>
+	<?php echo $this->escape($promotionInfo->start_time);?>
+    </div>
+
+	<div class="common-row">
+    <label>Expiry Time</label>
+	<?php echo $this->escape($promotionInfo->finish_time);?>
+    </div>
+
+	<div class="common-row">
+    <label>Fixed discount</label>
+	$<?php echo $this->escape($promotionInfo->fixed_discount);?>
+    </div>
+
+	<div class="common-row">
+    <label>Percentage discount</label>
+	<?php echo $this->escape($promotionInfo->percentage_discount);?>%
+    </div>
+
+	<?php //for Single Product Discount Promotion
+		if($promotionInfo->type == 1 || $promotionInfo->type == 7) {?>
+		<div class="common-row">
+		<label>Sku</label>
+		<?php echo $this->escape($promotionInfo->sku);?>
+		</div>
+	<?php } //for product List promotion
+		else if($promotionInfo->type == 2) { ?>
+		<div class="common-row">
+		<label>Product Lists</label>
+		<?php echo $this->escape($this->productList);?>
+		</div>
+	<?php } //for product Type promotion
+		else if($promotionInfo->type == 3) {
+			$metaDataRecord = $this->metaDataRecord;
+			if(count($metaDataRecord)) { 
+				foreach($metaDataRecord['attributes'] as $attributeId) { ?>
+					<div class="common-row">
+					<label><?=$metaDataRecord['label'][$attributeId];?></label>
+					<?php $valString = '';
+						foreach($metaDataRecord['value'.$attributeId]['value'] as $value) { $valString .= $value.', '; }
+						echo substr($valString, 0 , -2);
+					?>
+					</div>
+	<?php 
+				} //end of foreach
+			} //end of if
+		} //For Site Wide Promotion Discount
+		else if($promotionInfo->type == 4) { ?>
+		<div class="common-row">
+		<label>Gift Voucher Included?</label>
+		<?php echo $promotionInfo->	is_gift_vouchers_included?"Yes":"No";?>
+		</div>
+	<?php } //For Cart Promotion Discount
+		if($promotionInfo->type == 5 || $promotionInfo->type == 7) { ?>
+		<div class="common-row">
+		<label>Code</label>
+		<?php echo $this->escape($promotionInfo->code);?>
+		</div>
+	<?php } ?>
+	
+	<div class="common-row">
+    <label>Minimum Value</label>
+	<?php echo $promotionInfo->minimum_value?$this->escape('$'.$promotionInfo->minimum_value):"-";?>
+    </div>
+
+    <div class="common-row">
+    <label>Status</label>
+	<?php echo $promotionInfo->status?"Enabled":"Disabled";?>
+    </div>
+</div>

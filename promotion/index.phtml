@@ -1,0 +1,17 @@
+<?php if($this->success==1){?>
+	<div class="success-msg"> Promotion Discount created successfully. </div>
+<?php } elseif($this->success==2){?>
+	<div class="success-msg"> Promotion Discount updated successfully. </div>
+<?php } elseif($this->success==3){?>
+	<div class="success-msg"> Promotion Discount deleted successfully. </div>
+<?php } elseif($this->success==4) { ?>
+	<div class="error-msg"> Promotion Discount can not be deleted. Promotion is either active or unexpired. </div>
+<?php } elseif($this->success==5) { ?>
+	<div class="error-msg"> Promotion Discount is not Editable. Promotion is expired. </div>
+<?php } elseif($this->success==6) { ?>
+	<div class="error-msg"> Promotion Discount does not exists. </div>
+<?php } ?>
+<?php if($this->hide_add_button){ ?>
+	<div class="link-button"><a class="log" href="<?php echo $this->baseUrl();?>admin/promotion/select-promotion-type/">Add Promotion Discount</a></div>
+<?php } ?>
+<?php echo $this->grid;?>

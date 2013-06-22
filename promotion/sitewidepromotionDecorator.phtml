@@ -1,0 +1,80 @@
+<?php
+	$promotionRecord = $this->element->getView()->promotionRecord;
+	$promotionDiscountId = $this->element->getView()->promotionDiscountId;?>
+<div class="link-button"><a class="log" href="<?php echo $this->baseUrl();?>admin/promotion/">Back</a></div>
+<form action="" name='siteWidePromotionForm' id="siteWidePromotionForm" method="post" enctype="multipart/form-data">
+  <h2>Site Wide Promotion Discount</h2>
+  <div class="form-list">
+	<?php if(isset($this->element->getView()->successMsg)) {?>
+		<div class="success-msg"> <?php echo $this->element->getView()->successMsg;?> </div>
+	<?php }?>
+
+	<div class="common-row">
+		<label>Promotion Name <em>*</em></label>
+		<?php echo $this->element->name; ?>
+		<?php if(isset($this->element->getView()->uniqueErrorMsg)) {?>
+			<label for="name" id="unique-name-error" generated="true" class="error"><?php echo $this->element->getView()->uniqueErrorMsg;  ?></label>
+		<?php } else { ?>
+			<label for="name" id="unique-name-error" style="display:none;" generated="true" class="error"></label>
+		<?php } ?>
+    </div>
+
+	<div class="common-row" id="gift_voucher">
+		<label>Is Gift Voucher Included ? <em>*</em></label>
+		<div class="option_button"><?php echo $this->element->gift_voucher_flag; ?></div>
+    </div>
+
+	<div class="common-row">
+		<label>Description</label>
+		<?php echo $this->element->description; ?>
+    </div>
+
+	<div class="common-row date">
+		<label>Start Time <em>*</em></label>
+		<?php echo $this->element->start_time;?>
+    </div>
+	<label for="start_time" style="display:none;" generated="true" class="error"></label>
+
+	<div class="common-row date">
+		<label>Expiry Time <em>*</em></label>
+		<?php echo $this->element->expiry_time;?>
+    </div>
+	<label for="expiry_time" style="display:none;" generated="true" class="error"></label>
+
+	<div class="common-row discount">
+		<label>Fixed Discount (USD) <em>*</em></label>
+		<span class="discount_format"><?php echo Zend_Registry::get('Zend_Currency')->getSymbol(); ?></span>
+		<?php echo $this->element->fixed_discount;?>
+    </div>
+	<label for="fixed_discount" style="display:none;" generated="true" class="error"></label>
+
+	<div class="common-row discount">
+		<label>Percentage Discount <em>*</em></label>
+		<span class="discount_format">%</span>
+		<?php echo $this->element->percentage_discount; ?>
+    </div>
+	<label for="percentage_discount" style="display:none;" generated="true" class="error"></label>
+
+	<div class="common-row discount">
+		<label>Minimum Value (USD)</label>
+		<span class="discount_format"><?php echo Zend_Registry::get('Zend_Currency')->getSymbol(); ?></span>
+		<?php echo $this->element->min_value;?>
+    </div>
+	<label for="min_value" style="display:none;" generated="true" class="error"></label>
+
+	<div class="common-row">
+		<label>Discount Status <em>*</em></label>
+		<?php echo $this->element->status;?>
+    </div>
+
+	<div class="common-row">
+		<?php echo $this->element->promotion_discount_id;?>
+    </div>
+
+    <div class="form-button">
+		<?php echo $this->element->saveBtn;?>
+		<?php echo $this->element->Cancel->setAttrib('onclick',"window.location='".$this->baseUrl()."admin/promotion'");?>
+	</div>
+  </div>
+</form>
+

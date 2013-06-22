@@ -1,0 +1,11 @@
+<h2>Select Promotion Discount Type</h2>
+<div class="form-list" id="promotionFormContainer">
+<div class="common-row">
+		<ul class="promotion_types">
+		<?php foreach($this->getPromotionTypesArray as $typeKey=>$typeValue) { ?>
+			<li onclick="showPromotionForm(<?php echo $typeKey;?>)"><?php echo $typeValue;?></li>
+		<?php } ?>
+		</ul>
+
+</div>
+</div>
